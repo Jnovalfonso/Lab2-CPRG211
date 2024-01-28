@@ -67,6 +67,8 @@ namespace Inheritance
                 else amountPartTime++;
             }
 
+
+            // Write data in 'employees.txt.'
             using (StreamWriter sw = new StreamWriter("..\\..\\..\\res\\employees.txt"))
             {
                 sw.WriteLine($"The average weekly pay for all employees is: {average / employees.Count:F2}CAD");
@@ -77,9 +79,14 @@ namespace Inheritance
                     $"The percentage of 'PartTime' employees is: {amountPartTime / employees.Count * 100:F2}%\n");
             }
 
+            // Print results to Console:
 
-
-
+            Console.WriteLine($"The average weekly pay for all employees is: {average / employees.Count:F2}CAD");
+            Console.WriteLine($"The highest paid 'Wages' employee is: {highWage.Item1.name} -> {highWage.Item2}CAD");
+            Console.WriteLine($"The lowest paid 'Salaried' employee is: {lowSalary.Item1.name} -> {lowSalary.Item2}CAD");
+            Console.WriteLine($"The percentage of 'Salaried' employees is: {amountSalaried / 11 * 100:F2}%\n" +
+                $"The percentage of 'Wages' employees is: {amountWages / employees.Count * 100:F2}%\n" +
+                $"The percentage of 'PartTime' employees is: {amountPartTime / employees.Count * 100:F2}%\n");
         }
     }
 }
