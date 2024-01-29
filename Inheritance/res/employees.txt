@@ -1,0 +1,7 @@
+The average weekly pay for all employees is: 841,45CAD
+The highest paid 'Wages' employee is: Blanca -> 1541,55CAD
+The lowest paid 'Salaried' employee is: Juan -> 680,7CAD
+The percentage of 'Salaried' employees is: 36,36%
+The percentage of 'Wages' employees is: 45,45%
+The percentage of 'PartTime' employees is: 18,18%
+
