@@ -33,6 +33,8 @@ namespace Inheritance
             {
                 return hours * rate;
             }
+
+            
         }
 
         public override string ToString()

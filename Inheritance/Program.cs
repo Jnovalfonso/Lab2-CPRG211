@@ -26,16 +26,21 @@ namespace Inheritance
                 // Else if is a Wage employee:
                 else if (new char[] { '5', '6', '7'}.Contains(employeeData[0][0]))
                 {
-                    double rate = double.Parse(employeeData[7]);
-                    double hours = double.Parse(employeeData[8]);
+                    double rate = Convert.ToDouble(employeeData[7]) / 100;
+                    double hours = Convert.ToDouble(employeeData[8]);
                     employees.Add(new Wages(employeeData[0], employeeData[1], employeeData[2], employeeData[3], employeeData[4], employeeData[5], employeeData[6], rate, hours));
                 }
 
                 else if (new char[] { '8', '9' }.Contains(employeeData[0][0]))
                 {
-                    double rate = double.Parse(employeeData[7]);
+                    double rate = double.Parse(employeeData[7]) / 100;
                     double hours = double.Parse(employeeData[8]);
                     employees.Add(new PartTime(employeeData[0], employeeData[1], employeeData[2], employeeData[3], employeeData[4], employeeData[5], employeeData[6], rate, hours));
+                }
+
+                else
+                {
+                    Console.WriteLine("ID Not Valid");
                 }
             }
 
@@ -52,7 +57,6 @@ namespace Inheritance
             {
                 // Calculate weekly pay average:
                 average += employee.GetSalary();
-
                 if (employee is Wages)
                 {
                     // Add to amount of Wage employees
