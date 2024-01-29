@@ -15,7 +15,7 @@ namespace Inheritance
         }
 
         // Defined Constructor
-        public Wages(double rate, double hours, string id, string name, string address, string sin, string phone, string dob, string dept) : base(id, name, address, sin, phone, dob, dept)
+        public Wages(string id, string name, string address, string sin, string phone, string dob, string dept, double rate, double hours) : base(id, name, address, sin, phone, dob, dept)
         {
             this.rate = rate;
             this.hours = hours;

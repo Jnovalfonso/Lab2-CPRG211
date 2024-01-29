@@ -1,0 +1,7 @@
+The average weekly pay for all employees is: 193950,56CAD
+The highest paid 'Wages' employee is: Elle Driver -> 233450CAD
+The lowest paid 'Salaried' employee is: Samuel Ludlow III -> 20500CAD
+The percentage of 'Salaried' employees is: 27,27%
+The percentage of 'Wages' employees is: 44,44%
+The percentage of 'PartTime' employees is: 22,22%
+

@@ -11,22 +11,33 @@ namespace Inheritance
 
             List<Employee> employees = new List<Employee>();
 
-            // Creating instances for Salaried class
-            employees.Add(new Salaried(680.70, "1-895", "Juan", "758 Sky Street", "789-456-123", "(555)-789-0123", "01/15/1980", "Software Development"));
-            employees.Add(new Salaried(1060.80, "2-896", "Maria", "123 Main St", "123-456-789", "(555)-123-4567", "07/20/1985", "Management"));
-            employees.Add(new Salaried(700.90, "3-897", "Carlos", "456 Oak Ave", "456-789-012", "(555)-234-5678", "12/05/1990", "Accounting"));
-            employees.Add(new Salaried(910.90, "2-137", "Alex", "106 Palomino Ave", "416-719-113", "(555)-884-8672", "09/28/2000", "User Experience"));
+            string[] employeeFile = File.ReadAllLines("..\\..\\..\\res\\employees.txt");
+            foreach (string line in employeeFile)
+            {
+                string[] employeeData = line.Split(':');
 
-            // Creating instances for Wages class
-            employees.Add(new Wages(15.50, 42.5, "5-899", "Anna", "890 Pine Rd", "890-123-456", "(555)-345-6789", "03/10/1975", "Marketing"));
-            employees.Add(new Wages(38.75, 38.0, "6-900", "Samuel", "567 Elm St", "567-890-123", "(555)-456-7890", "09/25/1988", "Research and Development"));
-            employees.Add(new Wages(20.25, 45.5, "7-901", "Sophia", "234 Maple Dr", "234-567-890", "(555)-567-8901", "06/20/1995", "Human Resources"));
-            employees.Add(new Wages(35.85, 42.0, "6-121", "Blanca", "884 Towne Dr", "774-967-893", "(555)-927-3451", "03/10/1981", "Accounting"));
-            employees.Add(new Wages(14.75, 36.5, "9-904", "Olivia", "345 Pine Ave", "345-678-901", "(555)-890-1234", "02/25/1979", "Sales"));
+                // If employee has a 'Salaried' Id:
+                if (new char[] { '0', '1', '2', '3', '4' }.Contains(employeeData[0][0]))
+                {
+                    double salary = double.Parse(employeeData[7]);
+                    employees.Add(new Salaried(employeeData[0], employeeData[1], employeeData[2], employeeData[3], employeeData[4], employeeData[5], employeeData[6], salary));
+                }
 
-            // Creating instances for PartTime class
-            employees.Add(new PartTime(19.25, 25.5, "8-902", "Emily", "789 Birch Ln", "789-012-345", "(555)-678-9012", "11/30/1982", "Customer Support"));
-            employees.Add(new PartTime(15.50, 30.0, "9-903", "Daniel", "901 Cedar Rd", "901-234-567", "(555)-789-0123", "04/12/1987", "Quality Assurance"));
+                // Else if is a Wage employee:
+                else if (new char[] { '5', '6', '7'}.Contains(employeeData[0][0]))
+                {
+                    double rate = double.Parse(employeeData[7]);
+                    double hours = double.Parse(employeeData[8]);
+                    employees.Add(new Wages(employeeData[0], employeeData[1], employeeData[2], employeeData[3], employeeData[4], employeeData[5], employeeData[6], rate, hours));
+                }
+
+                else if (new char[] { '8', '9' }.Contains(employeeData[0][0]))
+                {
+                    double rate = double.Parse(employeeData[7]);
+                    double hours = double.Parse(employeeData[8]);
+                    employees.Add(new PartTime(employeeData[0], employeeData[1], employeeData[2], employeeData[3], employeeData[4], employeeData[5], employeeData[6], rate, hours));
+                }
+            }
 
 
             double average = 0;
@@ -80,7 +91,7 @@ namespace Inheritance
 
             // Write data in 'employees.txt.' - IF CURRENT PATH DOES NOT WORK USE '..\\employees.txt'
 
-            using (StreamWriter sw = new StreamWriter("..\\..\\..\\res\\employees.txt"))
+            using (StreamWriter sw = new StreamWriter("..\\..\\..\\res\\output.txt"))
             {
                 sw.WriteLine($"The average weekly pay for all employees is: {average / employees.Count:F2}CAD");
                 sw.WriteLine($"The highest paid 'Wages' employee is: {highWage.Item1.name} -> {highWage.Item2}CAD");

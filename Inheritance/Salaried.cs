@@ -15,7 +15,7 @@ namespace Inheritance
         }
 
         // Defined Constructor
-        public Salaried(double salary, string id, string name, string address, string sin, string phone, string dob, string dept) : base(id, name, address, sin, phone, dob, dept)
+        public Salaried(string id, string name, string address, string sin, string phone, string dob, string dept, double salary) : base(id, name, address, sin, phone, dob, dept)
         {
             this.salary = salary;
         }
